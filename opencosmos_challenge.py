@@ -209,17 +209,12 @@ drive = GoogleDrive(gauth)
 # of the desired directory
 for x in os.listdir(downloaddir):
    
-    f = drive.CreateFile({'title': 'x'})
-    f.SetContentFile(os.path.join(downloaddir, x))
-    f.Upload()
+    fil = drive.CreateFile({'title': 'x'})
+    fil.SetContentFile(os.path.join(downloaddir, x))
+    fil.Upload()
   
-    # Due to a known bug in pydrive if we 
-    # don't empty the variable used to
-    # upload the files to Google Drive the
-    # file stays open in memory and causes a
-    # memory leak, therefore preventing its 
-    # deletion
-    f = None
+
+    fil = None
 
 #Here is the link to the files 
 https://drive.google.com/drive/folders/1-24V1NDjdLDsHeg6idmOFxp0TnmQ6rjo?usp=sharing
